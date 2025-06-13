@@ -446,19 +446,19 @@
                 const a = parseFloat(this.paramA.value) || 1;
                 const b = parseFloat(this.paramB.value) || 0.33;
                 
-                // Очистка канвасов
+                // очистка канвасов
                 this.cartesianCtx.clearRect(0, 0, this.cartesianCanvas.width, this.cartesianCanvas.height);
                 this.polarCtx.clearRect(0, 0, this.polarCanvas.width, this.polarCanvas.height);
                 
-                // Рисование сеток
+                // рисование сеток
                 this.drawGrid(this.cartesianCtx, this.cartesianCanvas, false);
                 this.drawGrid(this.polarCtx, this.polarCanvas, true);
                 
-                // Рисование траекторий
+                // рисование траекторий
                 this.drawDeltoidPath(this.cartesianCtx, this.cartesianCanvas, a, b, false);
                 this.drawDeltoidPath(this.polarCtx, this.polarCanvas, a, b, true);
                 
-                // Рисование примитива в текущей позиции
+                // рисование примитива в текущей позиции
                 this.drawAnimationFrame();
             }
 
@@ -469,7 +469,7 @@
                 
                 const point = this.calculateDeltoid(this.currentT, a, b);
                 
-                // Декартова система
+                // декартова система
                 const cartCenterX = this.cartesianCanvas.width / 2;
                 const cartCenterY = this.cartesianCanvas.height / 2;
                 const cartScale = Math.min(this.cartesianCanvas.width, this.cartesianCanvas.height) / (8 * a);
@@ -478,7 +478,7 @@
                 
                 this.drawPrimitive(this.cartesianCtx, cartX, cartY, size, this.primitiveType);
                 
-                // Полярная система
+                // полярная система
                 const r = Math.sqrt(point.x * point.x + point.y * point.y);
                 const theta = Math.atan2(point.y, point.x);
                 
