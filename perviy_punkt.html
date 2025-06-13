@@ -181,17 +181,17 @@
                 ctx.lineWidth = 1;
                 
                 if (isPolar) {
-                    // Полярная сетка - концентрические окружности и радиальные линии
+                    // полярная сетка
                     const maxRadius = Math.min(width, height) * 0.4;
                     
-                    // Концентрические окружности
+                    // концентрические окружности
                     for (let r = maxRadius / 6; r <= maxRadius; r += maxRadius / 6) {
                         ctx.beginPath();
                         ctx.arc(centerX, centerY, r, 0, 2 * Math.PI);
                         ctx.stroke();
                     }
                     
-                    // Радиальные линии
+                    // радиальные линии
                     for (let angle = 0; angle < 2 * Math.PI; angle += Math.PI / 6) {
                         ctx.beginPath();
                         ctx.moveTo(centerX, centerY);
@@ -200,10 +200,10 @@
                         ctx.stroke();
                     }
                 } else {
-                    // Декартова сетка
+                    // декартова сетка
                     const gridSize = 40;
                     
-                    // Вертикальные линии
+                    // вертикальные линии
                     for (let x = centerX % gridSize; x < width; x += gridSize) {
                         ctx.beginPath();
                         ctx.moveTo(x, 0);
@@ -211,7 +211,7 @@
                         ctx.stroke();
                     }
                     
-                    // Горизонтальные линии
+                    // горизонтальные линии
                     for (let y = centerY % gridSize; y < height; y += gridSize) {
                         ctx.beginPath();
                         ctx.moveTo(0, y);
@@ -220,7 +220,7 @@
                     }
                 }
                 
-                // Оси координат
+                // оси координат
                 ctx.strokeStyle = '#333';
                 ctx.lineWidth = 2;
                 ctx.beginPath();
@@ -283,7 +283,6 @@
                 const centerY = canvas.height / 2;
                 const maxRadius = Math.min(canvas.width, canvas.height) * 0.4;
                 
-                // Вычисляем максимальное расстояние для масштабирования
                 let maxDist = 0;
                 for (let t = 0; t <= 6 * Math.PI * b; t += 0.1) {
                     const point = this.calculateDeltoid(t, a, b);
@@ -322,7 +321,6 @@
             }
         }
 
-        // Инициализация приложения
         window.addEventListener('load', () => {
             new DeltoidPlotter();
         });
